@@ -11,17 +11,17 @@ import lombok.*;
 @Data
 @Entity
 public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @EqualsAndHashCode.Include
-    private String uuid;
-    private String name;
-    private Double weight;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    public Product(String uuid, String name, Double weight) {
-        this.uuid = uuid;
-        this.name = name;
-        this.weight = weight;
-    }
+  @EqualsAndHashCode.Include private String uuid;
+  private String name;
+  private Double weight;
+
+  public Product(String uuid, String name, Double weight) {
+    this.uuid = uuid;
+    this.name = name;
+    this.weight = weight;
+  }
 }

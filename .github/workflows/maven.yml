@@ -18,12 +18,26 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Download Google Java Format
-        run: wget https://github.com/google/google-java-format/releases/download/v1.22.0/google-java-format-1.22.0-all-deps.jar
-      - name: Run Google Java Format
-        run: java -jar google-java-format-1.22.0-all-deps.jar --set-exit-if-changed --dry-run `git ls-files -z  '*.java' | xargs -0`
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          # super-linter needs the full git history to get the
+          # list of files that changed across commits
+          fetch-depth: 0
+
+      - name: Super-linter
+        uses: super-linter/super-linter@v7.2.0 # x-release-please-version
+        env:
+          # To report GitHub Actions status checks
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
   build:
     runs-on: ubuntu-latest
