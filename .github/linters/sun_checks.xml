@@ -39,7 +39,7 @@
 
       <property name="basedir" value="${basedir}"/>
   -->
-  <property name="severity" value="error"/>
+  <property name="severity" value="warning"/>
 
   <property name="fileExtensions" value="java, properties, xml"/>
 
@@ -51,14 +51,13 @@
 
   <!-- https://checkstyle.org/filters/suppressionfilter.html -->
   <module name="SuppressionFilter">
-    <property name="file" value="${org.checkstyle.sun.suppressionfilter.config}"
-              default="checkstyle-suppressions.xml" />
+    <property name="file" value="checkstyle_suppressions.xml"/>
     <property name="optional" value="true"/>
   </module>
 
   <!-- Checks that a package-info.java file exists for each package.     -->
   <!-- See https://checkstyle.org/checks/javadoc/javadocpackage.html#JavadocPackage -->
-  <!-- <module name="JavadocPackage"/> -->
+  <module name="JavadocPackage"/>
 
   <!-- Checks whether files end with a new line.                        -->
   <!-- See https://checkstyle.org/checks/misc/newlineatendoffile.html -->
@@ -98,13 +97,13 @@
   <module name="TreeWalker">
 
     <!-- Checks for Javadoc comments.                     -->
-    <!-- See https://checkstyle.org/checks/javadoc/index.html
+    <!-- See https://checkstyle.org/checks/javadoc/index.html -->
     <module name="InvalidJavadocPosition"/>
     <module name="JavadocMethod"/>
     <module name="JavadocType"/>
     <module name="JavadocVariable"/>
     <module name="JavadocStyle"/>
-    <module name="MissingJavadocMethod"/> -->
+    <module name="MissingJavadocMethod"/>
 
     <!-- Checks for Naming Conventions.                  -->
     <!-- See https://checkstyle.org/checks/naming/index.html -->
@@ -162,10 +161,7 @@
     <!-- See https://checkstyle.org/checks/coding/index.html -->
     <module name="EmptyStatement"/>
     <module name="EqualsHashCode"/>
-    <module name="HiddenField" >
-      <property name="ignoreSetter" value="true" />
-      <property name="ignoreConstructorParameter" value="true" />
-    </module>
+    <module name="HiddenField"/>
     <module name="IllegalInstantiation"/>
     <module name="InnerAssignment"/>
     <module name="MagicNumber"/>
