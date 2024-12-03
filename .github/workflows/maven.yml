@@ -37,7 +37,7 @@ jobs:
         uses: super-linter/super-linter@v7.2.0 # x-release-please-version
         env:
           VALIDATE_JAVA: true
-          FIX_GOOGLE_JAVA_FORMAT: true
+          VALIDATE_GOOGLE_JAVA_FORMAT: true
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
   build:
