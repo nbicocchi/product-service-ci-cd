@@ -17,9 +17,9 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-  ProductService productService;
+  private final ProductService productService;
 
-  public ProductController(ProductService productService) {
+  public ProductController(final ProductService productService) {
     this.productService = productService;
   }
 
