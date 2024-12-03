@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Google Java Format
-        run: https://github.com/google/google-java-format/releases/download/v1.22.0/google-java-format-1.22.0-all-deps.jar
+        run: wget https://github.com/google/google-java-format/releases/download/v1.22.0/google-java-format-1.22.0-all-deps.jar
       - name: Run Google Java Format
         run: java -jar google-java-format-1.22.0-all-deps.jar --set-exit-if-changed --dry-run `git ls-files -z  '*.java' | xargs -0`
 
