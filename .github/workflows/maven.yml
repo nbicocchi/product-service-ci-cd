@@ -43,8 +43,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact
-      - with:
-        - name: jar-artifact
-        - path: target/
+        with:
+          name: jar-artifact
+          path: target/
       - name: Build the Docker image
         run: docker build . --tag my-image-name:$(date +%s)
