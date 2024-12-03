@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.nbicocchi</groupId>
-	<artifactId>product-service-postgres</artifactId>
+	<artifactId>product-service-ci-cd</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Demo product for Spring Boot</description>
 
