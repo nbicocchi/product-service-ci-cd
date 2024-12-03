@@ -47,4 +47,4 @@ jobs:
           name: jar-artifact
           path: target/
       - name: Build the Docker image
-        run: docker build . --tag my-image-name:${{needs.build.outputs.jar_version}}
+        run: docker build . --tag my-image-name:latest
