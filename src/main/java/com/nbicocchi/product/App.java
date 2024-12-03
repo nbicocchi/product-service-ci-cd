@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @Log
 @SpringBootApplication
 public class App implements ApplicationRunner {
-  ProductRepository productRepository;
+  private final ProductRepository productRepository;
 
   public App(ProductRepository productRepository) {
     this.productRepository = productRepository;

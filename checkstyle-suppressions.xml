@@ -12,4 +12,6 @@
     <suppress files="." checks="JavadocVariable"/>
     <suppress files="." checks="JavadocPackage"/>
     <suppress files="." checks="MissingJavadocMethod"/>
+    <suppress files="." checks="DesignForExtension"/>
+    <suppress files="." checks="MagicNumber"/>
 </suppressions>

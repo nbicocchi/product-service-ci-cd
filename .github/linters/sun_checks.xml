@@ -39,7 +39,7 @@
 
       <property name="basedir" value="${basedir}"/>
   -->
-  <property name="severity" value="warning"/>
+  <property name="severity" value="error"/>
 
   <property name="fileExtensions" value="java, properties, xml"/>
 
@@ -51,7 +51,8 @@
 
   <!-- https://checkstyle.org/filters/suppressionfilter.html -->
   <module name="SuppressionFilter">
-    <property name="file" value="checkstyle_suppressions.xml"/>
+    <property name="file" value="${org.checkstyle.sun.suppressionfilter.config}"
+              default="checkstyle-suppressions.xml" />
     <property name="optional" value="true"/>
   </module>
 
