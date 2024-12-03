@@ -26,11 +26,11 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - run: mvn --batch-mode --update-snapshots verify
-      #- run: mkdir staging && cp target/*.jar staging
-      #- uses: actions/upload-artifact@v4
-      #  with:
-      #    name: Package
-      #    path: staging
+      - run: mkdir staging && cp target/*.jar staging
+      - uses: actions/upload-artifact
+        with:
+          name: jar-artifact
+          path: staging
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     #- name: Update dependency graph
@@ -41,5 +41,10 @@ jobs:
     needs: build
 
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact
+      - with:
+        - name: jar-artifact
+        - path: target/
       - name: Build the Docker image
-        run: docker build --tag my-image-name:$(date +%s) -f ./Dockerfile .
+        run: docker build . --tag my-image-name:$(date +%s)
