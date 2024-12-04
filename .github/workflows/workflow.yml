@@ -6,6 +6,9 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
+# username: pippo
+# password: pasticcio
+
 name: CI-CD Workflow
 
 on:
