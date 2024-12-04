@@ -68,7 +68,7 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       # Step 2: Download JAR artifact
       - name: Download artifact
@@ -79,15 +79,15 @@ jobs:
 
       # Step 3: Log in to Docker Hub
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+      - uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       # Step 4: Build the Docker image
       - name: Build Docker Image
-        run: docker build -t nbicocchi/product-service-ci-cd:latest .
+      - run: docker build -t nbicocchi/product-service-ci-cd:latest .
 
       # Step 5: Push the Docker image to Docker Hub
       - name: Push Docker Image
-        run: docker push nbicocchi/product-service-ci-cd:latest
+      - run: docker push nbicocchi/product-service-ci-cd:latest
