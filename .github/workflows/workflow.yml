@@ -73,7 +73,7 @@ jobs:
           path: target/
       - uses: mr-smithers-excellent/docker-build-push@v6
         with:
-          image: nbicocchi/edge-programming/product-service-ci-cd
+          image: nbicocchi/edge-programming
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
