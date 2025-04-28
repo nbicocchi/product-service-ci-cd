@@ -69,7 +69,7 @@ jobs:
 
     strategy:
       matrix:
-        java-version: [22, 21] # Test against Java 21, 23
+        java-version: [21, 22] # Test against Java 21, 22
 
     steps:
       - name: Checkout code
@@ -107,7 +107,7 @@ jobs:
       - name: Download Build Artifact
         uses: actions/download-artifact@v4
         with:
-          name: jar-artifact
+          name: jar-artifact-java-21
           path: target/
 
       - name: Build Docker Image
