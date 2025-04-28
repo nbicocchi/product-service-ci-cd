@@ -16,6 +16,10 @@ spring:
     console:
       enabled: true
 
+app:
+  user: abc
+  token: dsbhj82379478bkHKJHKGUY
+
 ---
 spring.config.activate.on-profile: docker
 server:
