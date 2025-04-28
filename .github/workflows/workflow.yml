@@ -22,8 +22,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Fetch full history for accurate file change tracking
 
       - name: Run Super-Linter
         uses: super-linter/super-linter@v7.3.0
@@ -38,8 +36,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Fetch full history for scanning multiple commits
 
       - name: Run GitGuardian Secret Scan
         uses: GitGuardian/ggshield/actions/secret@v1.34.0
@@ -71,6 +67,10 @@ jobs:
   build-artifact:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        java-version: [17, 21] # Test against Java 17, 21
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -78,7 +78,7 @@ jobs:
       - name: Setup Java Environment
         uses: actions/setup-java@v4
         with:
-          java-version: '21' # Specify Java version
+          java-version: ${{ matrix.java-version }} # Use the version from the matrix
           distribution: 'temurin'
           cache: maven # Enable Maven dependency caching
 
@@ -91,8 +91,9 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: jar-artifact
-          path: staging # Directory containing the JAR artifact
+          name: jar-artifact-java-${{ matrix.java-version }} # Make the artifact name include the Java version
+          path: staging
+
 
   # Build and Push Docker Image Job
   build-push-container-image:
