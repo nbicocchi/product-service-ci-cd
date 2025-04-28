@@ -28,9 +28,7 @@ services:
       - pgadmin-data:/var/lib/pgadmin
 
   product-service:
-    build: product-service-postgres
-    image: product-service-postgres
-    mem_limit: 512m
+    image: product-service-ci-cd:latest
     ports:
       - 8080:8080
     environment:
