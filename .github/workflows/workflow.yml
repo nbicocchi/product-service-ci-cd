@@ -28,6 +28,7 @@ jobs:
       - name: Run Super-Linter
         uses: super-linter/super-linter@v7.3.0
         env:
+          VALIDATE_JAVA: true # Enables checks for Java and disables all others
           GITHUB_TOKEN: ${{ secrets.TOKEN }} # Authentication token
 
   # GitGuardian Secrets Scan Job
