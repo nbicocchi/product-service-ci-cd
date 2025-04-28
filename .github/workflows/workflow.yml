@@ -3,9 +3,6 @@
 
 name: CI-CD Workflow
 
-#username: p1ppo
-#password: past1cc1o
-
 on:
   push:
     branches: [ "main" ] # Trigger on pushes to the main branch
