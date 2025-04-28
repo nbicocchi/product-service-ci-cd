@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: user
-      POSTGRES_PASSWORD: past1cc1o
+      POSTGRES_PASSWORD: secret
       POSTGRES_DB: jdbc_schema
     volumes:
       - pg-data:/var/lib/postgresql/data
