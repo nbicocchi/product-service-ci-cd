@@ -3,22 +3,15 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/jdbc_schema
+    username: user
+    password: secret
   jpa:
     open-in-view: false
     hibernate.ddl-auto: create-drop
     defer-datasource-initialization: true
   sql:
     init.mode: always
-  h2:
-    console:
-      enabled: true
-
-app:
-  user: abc
-  token: dsbhj82379478bkHKJHKGUY
 
 ---
 spring.config.activate.on-profile: docker
