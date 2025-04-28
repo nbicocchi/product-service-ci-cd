@@ -26,7 +26,7 @@ jobs:
           fetch-depth: 0 # Fetch full history for accurate file change tracking
 
       - name: Run Super-Linter
-        uses: super-linter/super-linter@v7.2.0
+        uses: super-linter/super-linter@v7.3.0
         env:
           VALIDATE_JAVA: true # Enable Java validation
           GITHUB_TOKEN: ${{ secrets.TOKEN }} # Authentication token
