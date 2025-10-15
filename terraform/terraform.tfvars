@@ -1,0 +1,1 @@
+public_key_path = "../.ssh/github_deployment_key.pub"
