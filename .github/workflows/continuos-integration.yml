@@ -1,7 +1,7 @@
 # CI/CD Workflow for building, scanning, and deploying a Java project
 # Includes steps for linting, security scans, artifact building, and Docker image deployment
 
-name: CI-CD Workflow
+name: Continuos integration
 
 on:
   push:
