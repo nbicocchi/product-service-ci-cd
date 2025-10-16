@@ -5,10 +5,11 @@
 
   vars:
     db_name: jdbc_schema
-    db_user: user
+    db_user: myuser
     db_password: secret
-    pg_conf_path: /etc/postgresql/16/main/postgresql.conf
-    hba_path: /etc/postgresql/16/main/pg_hba.conf
+    pg_version: 16
+    pg_conf_path: "/etc/postgresql/{{ pg_version }}/main/postgresql.conf"
+    hba_path: "/etc/postgresql/{{ pg_version }}/main/pg_hba.conf"
 
   tasks:
 
@@ -20,7 +21,7 @@
 
     - name: Check postgresql installation
       apt:
-        name: postgresql
+        name: "postgresql-{{ pg_version }}"
         state: present
 
     - name: Check postgresql service status
@@ -32,11 +33,6 @@
     - name: Check OpenJDK 21 installation
       apt:
         name: openjdk-21-jdk
-        state: present
-
-    - name: Check maven installation
-      apt:
-        name: maven
         state: present
 
     # Set up postgres
