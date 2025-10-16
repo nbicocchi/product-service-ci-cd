@@ -31,7 +31,7 @@ jobs:
           -i ${{ secrets.EC2_HOST }}, ansible/docker-setup.yml \
           --user ${{ secrets.EC2_USER }} \
           --private-key ~/.ssh/deploy_key \
-          --extra-vars "ec2_host=${{ secrets.EC2_HOST }}"
+          --extra-vars "ec2_host=${{ secrets.EC2_HOST }} repo_url=${{ github.server_url }}/${{ github.repository }}.git"
 
       - name: Run Docker deploy playbook
         run: |
