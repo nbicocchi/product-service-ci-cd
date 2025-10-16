@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/jdbc_schema
-    username: user
+    username: myuser
     password: secret
   jpa:
     open-in-view: false
@@ -21,3 +21,5 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://postgres:5432/jdbc_schema
+    username: user
+    password: secret
