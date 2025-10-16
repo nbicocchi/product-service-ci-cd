@@ -36,6 +36,6 @@ jobs:
       - name: Run Docker deploy playbook
         run: |
           ansible-playbook \
-          -i ${{ secrets.EC2_HOST }}, ansible/docker-deploy.yml \
+          -i ${{ secrets.EC2_HOST }}, ansible/docker-run.yml \
           --user ${{ secrets.EC2_USER }} \
           --private-key ~/.ssh/deploy_key \
