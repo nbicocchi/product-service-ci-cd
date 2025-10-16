@@ -1,0 +1,41 @@
+---
+- name: Get and start product-service app
+  hosts: all
+  become: true
+
+  tasks:
+    
+    # App execution tasks
+    
+    - name: Copy .jar file from runner to ec2
+      copy:
+        src: "{{ artifact_path }}/{{ app_name }}.jar"
+        dest: /opt/product-service.jar
+        mode: '0755'
+
+    - name: Managing .jar execution as a service
+      copy:
+        dest: /etc/systemd/system/webapp.service
+        content: |
+          [Unit]
+          Description=Product Service Webapp
+          After=network.target
+
+          [Service]
+          User=ubuntu
+          ExecStart=/usr/bin/java -jar /opt/product-service.jar
+          SuccessExitStatus=143
+          Restart=always
+          RestartSec=5
+
+          [Install]
+          WantedBy=multi-user.target
+      become: true
+
+
+    - name: Starting webapp service
+      systemd:
+        name: webapp
+        enabled: true
+        state: restarted
+      become: true

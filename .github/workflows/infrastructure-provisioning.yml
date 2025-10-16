@@ -51,19 +51,5 @@ jobs:
           echo "ec2_ip=$EC2_IP" >> $GITHUB_OUTPUT
         working-directory: terraform
 
-      - name: Update EC2_HOST secret
-        uses: gliech/create-github-secret-action@v1  
-        with:  
-          name: EC2_HOST  
-          value: ${{ steps.output.outputs.ec2_ip }}
-          pa_token: ${{ secrets.PAT_TOKEN }}  
-
-      - name: Update EC2_USER secret
-        uses: gliech/create-github-secret-action@v1  
-        with:  
-          name: EC2_USER  
-          value: ubuntu
-          pa_token: ${{ secrets.PAT_TOKEN }}  
-
       - name: Verification
-        run: echo "Saved IP ${{ steps.output.outputs.ec2_ip }} into EC2_HOST"
+        run: echo "Got IP ${{ steps.output.outputs.ec2_ip }}, remember to manually update secrets.EC2_HOST"

@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configure SSH key for ec2 access
         run: |
@@ -36,6 +36,7 @@ jobs:
       - name: Run Docker deploy playbook
         run: |
           ansible-playbook \
-          -i ${{ secrets.EC2_HOST }}, ansible/docker-deploy.yml \
+          -i ${{ secrets.EC2_HOST }}, ansible/docker-run.yml \
           --user ${{ secrets.EC2_USER }} \
           --private-key ~/.ssh/deploy_key \
+          --extra-vars "repo_url=${{ github.server_url }}/${{ github.repository }}.git"
