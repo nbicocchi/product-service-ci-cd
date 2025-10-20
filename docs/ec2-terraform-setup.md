@@ -31,7 +31,7 @@ cat ~/.ssh/deploy_key       # Private key
 
 ### Step 2: update the public key file
 
-* Replace the content of `.ssh/github.deployment_key.pub` file in this repository using the content of your `deploy_key.pub` (your public key).
+* Replace the content of `.ssh/github_deployment_key.pub` file in this repository using the content of your `deploy_key.pub` (your public key).
 
 Terraform uses this file to create a new *AWS keypair* resource. Remember that an *AWS keypair* must be unique, so if you previously created an *AWS keypair* with the same public key you must delete it using the AWS Management Console.
 
@@ -61,7 +61,7 @@ At the end of the workflow execution you can check workflow logs and get your ma
 
 ## Set up repository secrets
 
-If toy want to run deploy workflows you need to setup some repository secrets.
+If you want to run deploy workflows you need to setup some repository secrets.
 
 On GitHub:
 * Reach your forked repository

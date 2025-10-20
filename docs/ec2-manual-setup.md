@@ -31,8 +31,8 @@ The `.pem` contains your private key. Move it to the `.ssh` folder and set corre
 On your terminal execute:
 
 ```bash
-   mv ~/Download/my-ec2-key.pem ~/.ssh       # Move file
-   chmod 400 ~/.ssh/my-ec2-key.pem           # Set file permissions
+mv ~/Download/my-ec2-key.pem ~/.ssh       # Move file
+chmod 400 ~/.ssh/my-ec2-key.pem           # Set file permissions
 ```
 
 ## Instance setup
@@ -106,13 +106,13 @@ Your Elastic IP is now permanently associated with your EC2 instance.
 * From your terminal, create an SSH connection to your instance:
 
 ```bash
-   cd ~/.ssh
-   ssh -i my-ec2-key.pem ubuntu@<your-elastic-ip>
+cd ~/.ssh
+ssh -i my-ec2-key.pem ubuntu@<your-elastic-ip>
 ```
 
 ## Set up repository secrets
 
-If toy want to run deploy workflows you need to setup some repository secrets.
+If you want to run deploy workflows you need to setup some repository secrets.
 
 On GitHub:
 * Reach your forked repository
