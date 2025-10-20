@@ -1,5 +1,15 @@
 # AWS EC2 instance setup with Terraform
 
+Terraform is an **Infrastructure as Code** tool that allows you to define infrastructure resources using a declarative language.
+
+Terraform files into the [terraform folder](../terraform) of this repository allows you to easily get all the needed infrastructure resources to run deployment workflows.
+
+## Prerequisites
+
+- An active [AWS account](https://aws.amazon.com/console/)
+- Basic familiarity with the AWS Management Console
+- Basic familiarity with some bash commands and Linux systems
+
 ## Get your AWS CLI credentials
 
 AWS CLI access keys enable Terraform to provision cloud infrastructure. You need:
