@@ -41,7 +41,7 @@ Terraform uses this file to create a new *AWS keypair* resource. Remember that a
 
 This secret allows GitHub runners to create connections to the EC2 instance.
 
->[!WARNING]
+>[!NOTE]
 > Copy and paste **ALL** the content of your private key file into the secret variable. Include also the following lines from the file:
 >
 > `-----BEGIN OPENSSH PRIVATE KEY-----`

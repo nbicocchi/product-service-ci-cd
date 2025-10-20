@@ -6,7 +6,7 @@ It’s ideal for learning how to integrate infrastructure provisioning, deployme
 
 ## Repository fork and setup
 
-> [!WARNING]
+> [!NOTE]
 > Do **not** modify secrets or push changes directly to this repository. Fork it to run experiments safely.
 
 If you want to test the `deploy-JAR` workflow and the `deploy-docker` workflow you need an AWS EC2 instance (a virtual machine with a public IP address). You can create an AWS EC2 instance in two ways:

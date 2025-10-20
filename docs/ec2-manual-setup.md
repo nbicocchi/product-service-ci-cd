@@ -130,7 +130,7 @@ If you want to see the content of your `.pem` file:
 sudo cat ~/.ssh/my-ec2-key.pem
 ```
 
->[!WARNING]
+>[!NOTE]
 > Copy and paste **ALL** the content of your `.pem` file into the secret variable. Include also the following lines from the file:
 >
 > `-----BEGIN OPENSSH PRIVATE KEY-----`
