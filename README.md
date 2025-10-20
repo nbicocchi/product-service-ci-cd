@@ -19,7 +19,7 @@ It’s ideal for learning how to integrate infrastructure provisioning, deployme
 
 ### 1. Infrastructure workflow
 
-**File:** `infrastructure-workflow.yml`
+**File:** `infrastructure-provisioning.yml`
 **Purpose:** Provision and configure an AWS EC2 instance.
 
 **What it does:**
