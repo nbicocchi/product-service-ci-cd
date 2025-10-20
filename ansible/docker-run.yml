@@ -4,7 +4,6 @@
   become: true
 
   vars:
-    repo_url: https://github.com/fabrizio-tedeschi/product-service-ci-cd.git
     repo_dest: /opt/product-service
 
   tasks:
@@ -30,4 +29,3 @@
       command: docker compose up -d
       args:
         chdir: "{{ repo_dest }}"
-
