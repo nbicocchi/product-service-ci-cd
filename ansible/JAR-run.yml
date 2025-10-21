@@ -23,6 +23,7 @@
 
           [Service]
           User=ubuntu
+          Environment="SERVER_PORT=8080"
           ExecStart=/usr/bin/java -jar /opt/product-service.jar
           SuccessExitStatus=143
           Restart=always
