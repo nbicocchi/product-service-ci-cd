@@ -6,14 +6,10 @@ It’s ideal for learning how to integrate infrastructure provisioning, deployme
 
 ## Repository fork and setup
 
-> [!NOTE]
-> Do **not** modify secrets or push changes directly to this repository. Fork it to run experiments safely.
-
-If you want to test the `deploy-JAR` workflow and the `deploy-docker` workflow you need an AWS EC2 instance (a virtual machine with a public IP address). You can create an AWS EC2 instance in two ways:
+To test automated workflows you need an AWS EC2 instance (a virtual machine with a public IP address). You can create an AWS EC2 instance in two ways:
 
 * **Manually** using the AWS console. Follow [this guide](./docs/ec2-manual-setup.md).
 * **Automatically** using Terraform files via `infrastructure provisioning` workflow. Follow [this guide](./docs/ec2-terraform-setup.md).
-
 
 ## About workflows
 
@@ -53,11 +49,3 @@ If you want to test the `deploy-JAR` workflow and the `deploy-docker` workflow y
 * Configures SSH access and environment variables.
 
 > **Required secrets:** `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
-
-## Manual workflow trigger
-
-Some workflows run automatically on `push`. To trigger manually:
-
-1. Go to the **Actions** tab.
-2. Select the desired workflow.
-3. Click **Run workflow** and provide any required inputs.

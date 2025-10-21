@@ -81,25 +81,6 @@ The AWS machine image allows you to choose the machine architecture and its oper
 * Click the **Launch Instance** button.
 * Wait for the instance status to become **Running**.
 
-## Elastic IP association
-
-You can provide a fixed public IP to your EC2 instance using the Elastic IP service.
-
-### Step 1: Allocate an Elastic IP
-
-* In the **EC2 Dashboard**, scroll down and select **Elastic IPs** from the sidebar.
-* Click **Allocate Elastic IP address**.
-* Under **Network Border Group**, ensure it matches your instance’s region.
-* Click **Allocate**.
-
-### Step 2: Associate Elastic IP to the EC2 instance
-
-* After allocation, select your new Elastic IP.
-* Click **Actions > Associate Elastic IP address**.
-* Under **Instance**, choose your running EC2 instance.
-* Click **Associate**.
-
-Your Elastic IP is now permanently associated with your EC2 instance.
 
 ## Test SSH connection to the machine
 
@@ -107,7 +88,7 @@ Your Elastic IP is now permanently associated with your EC2 instance.
 
 ```bash
 cd ~/.ssh
-ssh -i my-ec2-key.pem ubuntu@<your-elastic-ip>
+ssh -i my-ec2-key.pem ubuntu@<hostname>
 ```
 
 ## Set up repository secrets
