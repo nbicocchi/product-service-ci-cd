@@ -33,6 +33,9 @@
           WantedBy=multi-user.target
       become: true
 
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes
 
     - name: Starting webapp service
       systemd:

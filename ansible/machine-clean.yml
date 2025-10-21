@@ -1,11 +1,23 @@
 ---
-- name: Pulizia completa di un'istanza EC2 Ubuntu
+- name: AWS EC2 instance clean
   hosts: all
   become: yes
 
   tasks:
 
     # Stop webapp service
+
+    - name: Stop webapp service if running
+      systemd:
+        name: webapp.service
+        state: stopped
+      ignore_errors: yes
+
+    - name: Disable webapp service at startup
+      systemd:
+        name: webapp.service
+        enabled: no
+      ignore_errors: yes
 
     - name: Delete webapp.service
       file:
