@@ -1,10 +1,10 @@
-name: Deploy Docker
+name: Infrastructure clean
 
 on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  clean:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,18 +25,9 @@ jobs:
       - name: Set up Ansible
         run: sudo apt-get update && sudo apt-get install -y ansible
 
-      - name: Run Docker setup playbook
+      - name: Run machine clean playbook
         run: |
           ansible-playbook \
-          -i ${{ secrets.EC2_HOST }}, ansible/docker-setup.yml \
+          -i ${{ secrets.EC2_HOST }}, ansible/machine-clean.yml \
           --user ${{ secrets.EC2_USER }} \
-          --private-key ~/.ssh/deploy_key \
-          --extra-vars "ec2_host=${{ secrets.EC2_HOST }}"
-
-      - name: Run Docker deploy playbook
-        run: |
-          ansible-playbook \
-          -i ${{ secrets.EC2_HOST }}, ansible/docker-run.yml \
-          --user ${{ secrets.EC2_USER }} \
-          --private-key ~/.ssh/deploy_key \
-          --extra-vars "repo_url=${{ github.server_url }}/${{ github.repository }}.git"
+          --private-key ~/.ssh/deploy_key
