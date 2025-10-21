@@ -1,0 +1,33 @@
+name: Infrastructure cleaning
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure SSH key for ec2 access
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf "%s\n" "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+
+      - name: Add ec2 IP to known host list
+        run: |
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts || true
+
+      - name: Set up Ansible
+        run: sudo apt-get update && sudo apt-get install -y ansible
+
+      - name: Run machine clean playbook
+        run: |
+          ansible-playbook \
+          -i ${{ secrets.EC2_HOST }}, ansible/machine-clean.yml \
+          --user ${{ secrets.EC2_USER }} \
+          --private-key ~/.ssh/deploy_key

@@ -70,8 +70,7 @@ The AWS machine image allows you to choose the machine architecture and its oper
 | Type         | Protocol  | Port Range  | Source        | Description                 |
 |--------------|-----------|-------------|---------------|-----------------------------|
 | SSH          | TCP       | 22          | 0.0.0.0/0     | SSH access for admin use    |
-| Custom TCP   | TCP       | 7001        | 0.0.0.0/0     | Webapp port                 |
-| Custom TCP   | TCP       | 8080        | 0.0.0.0/0     | Webapp port (docker)        |
+| Custom TCP   | TCP       | 8080        | 0.0.0.0/0     | Webapp port                 |
 
 * Keep outbound rules as default (all traffic allowed).
 
