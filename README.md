@@ -13,6 +13,19 @@ To test automated workflows you need an AWS EC2 instance (a virtual machine with
 
 ## About workflows
 
+### Infrastructure cleaning workflow
+
+**File:** `infrastructure-clean.yml`
+**Purpose:** Clean infrastructure before deploy workflow trigger
+
+**What it does:**
+
+* Removes webapp service
+* Uninstalls Docker and PostgreSQL
+* Cleans EC2 opt folder
+
+> **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`.
+
 ### JAR workflow
 
 **File:** `deploy-JAR.yml`
@@ -38,7 +51,7 @@ To test automated workflows you need an AWS EC2 instance (a virtual machine with
 
 > **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`. Additional secrets may be needed for container configurations.
 
-### Infrastructure workflow
+### Infrastructure provisioning workflow
 
 **File:** `infrastructure-provisioning.yml`
 **Purpose:** Provision and configure an AWS EC2 instance.

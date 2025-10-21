@@ -1,4 +1,4 @@
-name: Infrastructure clean
+name: Infrastructure cleaning
 
 on:
   workflow_dispatch:
