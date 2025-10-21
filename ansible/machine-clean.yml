@@ -1,0 +1,76 @@
+---
+- name: Pulizia completa di un'istanza EC2 Ubuntu
+  hosts: all
+  become: yes
+
+  tasks:
+
+    # Stop webapp service
+
+    - name: Delete webapp.service
+      file:
+        path: /etc/systemd/system/webapp.service
+        state: absent
+      ignore_errors: yes
+
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes
+
+    # Uninstall Docker
+
+    - name: Stop all Docker containers
+      shell: |
+        docker ps -q | xargs -r docker stop
+      ignore_errors: yes
+
+    - name: Remove Docker and plugins
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: absent
+        purge: yes
+        autoremove: yes
+        update_cache: yes
+      ignore_errors: yes
+
+    - name: Remove Docker directory
+      file:
+        path: /var/lib/docker
+        state: absent
+      ignore_errors: yes
+
+    # Uninstall PostgreSQL
+
+    - name: Remove all PostgreSQL versions
+      apt:
+        name: "{{ item }}"
+        state: absent
+        purge: yes
+        autoremove: yes
+        update_cache: yes
+      loop:
+        - postgresql*
+        - postgresql-client*
+        - postgresql-contrib*
+        - postgresql-*
+
+    - name: Remove PostgreSQL data directories
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /var/lib/postgresql
+        - /etc/postgresql
+      ignore_errors: yes
+
+    # Clean opt folder
+
+    - name: Clean opt folder
+      shell: >-
+        sudo rm -rf /opt/*
+      become: true

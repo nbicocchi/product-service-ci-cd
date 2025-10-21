@@ -25,6 +25,13 @@ jobs:
       - name: Set up Ansible
         run: sudo apt-get update && sudo apt-get install -y ansible
 
+      - name: Run machine clean playbook
+        run: |
+          ansible-playbook \
+          -i ${{ secrets.EC2_HOST }}, ansible/machine-clean.yml \
+          --user ${{ secrets.EC2_USER }} \
+          --private-key ~/.ssh/deploy_key
+
       - name: Run Docker setup playbook
         run: |
           ansible-playbook \
