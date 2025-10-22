@@ -7,11 +7,19 @@ resource "tls_private_key" "dynamic_key" {
   algorithm = "ED25519"
 }
 
+resource "random_string" "key_suffix" {
+  length  = 6
+  upper   = false
+  lower   = true
+  number  = true
+  special = false
+}
+
 resource "aws_key_pair" "deployment_key" {
-  key_name   = "${var.app_name}-key"
+  key_name   = "${var.app_name}-${random_string.key_suffix.result}"
   public_key = tls_private_key.dynamic_key.public_key_openssh
   tags = {
-    Name = "${var.app_name}-key"
+    Name = "${var.app_name}-${random_string.key_suffix.result}"
   }
 }
 
