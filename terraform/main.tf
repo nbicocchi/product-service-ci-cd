@@ -2,17 +2,13 @@ provider "aws" {
   region = var.aws_region
 }
 
-# Set up an AWS keypair starting from an existing public key
-
 resource "aws_key_pair" "deployment_key" {
   key_name   = var.key_name
   public_key = file(var.public_key_path)
   tags = {
-    Name = "${var.key_name}"
+    Name = var.key_name
   }
 }
-
-# Security Group
 
 resource "aws_security_group" "product_service_sg" {
   name_prefix = "${var.app_name}-sg"
@@ -46,19 +42,18 @@ resource "aws_security_group" "product_service_sg" {
   }
 }
 
-# EC2 instance
-
 resource "aws_instance" "product_service_instance" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = aws_key_pair.deployment_key.key_name
-  security_groups = [aws_security_group.product_service_sg.name]
-  associate_public_ip_address = false
+  ami                         = var.ami_id
+  instance_type               = var.instance_type
+  key_name                    = aws_key_pair.deployment_key.key_name
+  vpc_security_group_ids      = [aws_security_group.product_service_sg.id]
+  subnet_id                   = var.subnet_id
+  associate_public_ip_address  = true
 
   tags = {
-    Name = "${var.app_name}-instance"
+    Name        = "${var.app_name}-instance"
     Environment = var.environment
   }
 
-  depends_on = [aws_eip.instance_eip] 
+  depends_on = [aws_key_pair.deployment_key]
 }
