@@ -5,7 +5,7 @@
 
   vars:
     db_name: jdbc_schema
-    db_user: myuser
+    db_user: user
     db_password: secret
     pg_version: 16
     pg_conf_path: "/etc/postgresql/{{ pg_version }}/main/postgresql.conf"
