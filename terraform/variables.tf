@@ -16,16 +16,6 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
-variable "key_name" {
-  description = "SSH key pair name on aws"
-  type        = string
-  default     = "github-deployment-key"
-}
-
-variable "public_key_path" {
-  description = "Local path to SSH public key file"
-  type        = string
-}
 
 variable "app_name" {
   description = "App name for resources tag"
