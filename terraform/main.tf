@@ -46,17 +46,6 @@ resource "aws_security_group" "product_service_sg" {
   }
 }
 
-
-# Elastic IP
-
-resource "aws_eip" "instance_eip" {
-  domain = "vpc" 
-  
-  tags = {
-    Name = "${var.app_name}-elasticIP"
-  }
-}
-
 # EC2 instance
 
 resource "aws_instance" "product_service_instance" {
@@ -74,16 +63,10 @@ resource "aws_instance" "product_service_instance" {
   depends_on = [aws_eip.instance_eip] 
 }
 
-# Associate EIP <-> EC2
-
-resource "aws_eip_association" "eip_assoc" {
-  instance_id   = aws_instance.product_service_instance.id
-  allocation_id = aws_eip.instance_eip.id
-}
 
 # Output
 
 output "instance_public_ip" {
-  description = "L'indirizzo IP pubblico dell'istanza EC2."
+  description = "Public IP"
   value       = aws_eip.instance_eip.public_ip
 }
