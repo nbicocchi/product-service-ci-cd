@@ -4,21 +4,6 @@
   become: true
 
   tasks:
-    - name: Remove old packages
-      apt:
-        name:
-          - docker.io
-          - docker-doc
-          - docker-compose
-          - docker-compose-v2
-          - podman-docker
-          - containerd
-          - runc
-        state: absent
-        purge: yes
-        autoremove: yes
-        update_cache: yes
-
     - name: Install base packages
       apt:
         name:
@@ -55,9 +40,3 @@
           - docker-compose-plugin
         state: present
         update_cache: yes
-
-    - name: Start Docker
-      systemd:
-        name: docker
-        state: started
-        enabled: true

@@ -1,0 +1,40 @@
+---
+- name: AWS EC2 instance clean
+  hosts: all
+  become: yes
+
+  tasks:
+
+    # Uninstall Docker
+
+    - name: Stop all Docker containers
+      shell: |
+        docker ps -q | xargs -r docker stop
+      ignore_errors: yes
+
+    - name: Remove Docker and plugins
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: absent
+        purge: yes
+        autoremove: yes
+        update_cache: yes
+      ignore_errors: yes
+
+    - name: Remove Docker directory
+      file:
+        path: /var/lib/docker
+        state: absent
+      ignore_errors: yes
+
+    # Clean opt folder
+
+    - name: Clean opt folder
+      shell: >-
+        sudo rm -rf /opt/*
+      become: true

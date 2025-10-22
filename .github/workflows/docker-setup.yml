@@ -1,4 +1,4 @@
-name: Deploy Docker
+name: Docker setup
 
 on:
   workflow_dispatch:
@@ -30,13 +30,4 @@ jobs:
           ansible-playbook \
           -i ${{ secrets.EC2_HOST }}, ansible/docker-setup.yml \
           --user ${{ secrets.EC2_USER }} \
-          --private-key ~/.ssh/deploy_key \
-          --extra-vars "ec2_host=${{ secrets.EC2_HOST }}"
-
-      - name: Run Docker deploy playbook
-        run: |
-          ansible-playbook \
-          -i ${{ secrets.EC2_HOST }}, ansible/docker-run.yml \
-          --user ${{ secrets.EC2_USER }} \
-          --private-key ~/.ssh/deploy_key \
-          --extra-vars "repo_url=${{ github.server_url }}/${{ github.repository }}.git"
+          --private-key ~/.ssh/deploy_key
