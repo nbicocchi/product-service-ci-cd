@@ -2,11 +2,16 @@ provider "aws" {
   region = var.aws_region
 }
 
+# Generate a new SSH key pair dynamically
+resource "tls_private_key" "dynamic_key" {
+  algorithm = "ED25519"
+}
+
 resource "aws_key_pair" "deployment_key" {
-  key_name   = var.key_name
-  public_key = file(var.public_key_path)
+  key_name   = "${var.app_name}-key"
+  public_key = tls_private_key.dynamic_key.public_key_openssh
   tags = {
-    Name = var.key_name
+    Name = "${var.app_name}-key"
   }
 }
 
@@ -47,7 +52,7 @@ resource "aws_instance" "product_service_instance" {
   instance_type               = var.instance_type
   key_name                    = aws_key_pair.deployment_key.key_name
   vpc_security_group_ids      = [aws_security_group.product_service_sg.id]
-  associate_public_ip_address  = true
+  associate_public_ip_address = true
 
   tags = {
     Name        = "${var.app_name}-instance"
@@ -55,4 +60,10 @@ resource "aws_instance" "product_service_instance" {
   }
 
   depends_on = [aws_key_pair.deployment_key]
+}
+
+# Output the private key so GitHub Actions can use it
+output "private_key_pem" {
+  value     = tls_private_key.dynamic_key.private_key_pem
+  sensitive = true
 }
