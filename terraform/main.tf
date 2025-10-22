@@ -62,11 +62,3 @@ resource "aws_instance" "product_service_instance" {
 
   depends_on = [aws_eip.instance_eip] 
 }
-
-
-# Output
-
-output "instance_public_ip" {
-  description = "Public IP"
-  value       = aws_eip.instance_eip.public_ip
-}
