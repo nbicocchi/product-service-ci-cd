@@ -65,5 +65,4 @@ resource "aws_instance" "product_service_instance" {
 # Output the private key so GitHub Actions can use it
 output "private_key_pem" {
   value     = tls_private_key.dynamic_key.private_key_pem
-  sensitive = true
 }
