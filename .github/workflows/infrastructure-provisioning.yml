@@ -36,12 +36,12 @@ jobs:
 
       - name: Terraform plan
         id: plan
-        run: terraform plan -input=false -var-file=terraform.tfvars
+        run: terraform plan -input=false
         working-directory: terraform
 
       - name: Terraform apply
         id: apply
-        run: terraform apply -input=false -auto-approve -var-file=terraform.tfvars
+        run: terraform apply -input=false -auto-approve
         working-directory: terraform
 
       - name: Get OpenSSH private key
