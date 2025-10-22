@@ -43,11 +43,10 @@ jobs:
         id: apply
         run: terraform apply -input=false -auto-approve -var-file=terraform.tfvars
         working-directory: terraform
-      # Capture the dynamic private key and save it
 
-      - name: Get Terraform Output (Private Key)
+      - name: Get OpenSSH private key
         id: get_key
         run: |
-          PRIVATE_KEY=$(terraform output -raw private_key_pem)
+          PRIVATE_KEY=$(terraform output -raw private_key_openssh)
           echo "$PRIVATE_KEY"
         working-directory: terraform

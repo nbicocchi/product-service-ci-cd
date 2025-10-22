@@ -11,7 +11,7 @@ resource "random_string" "key_suffix" {
   length  = 6
   upper   = false
   lower   = true
-  number  = true
+  numeric  = true
   special = false
 }
 
@@ -70,8 +70,7 @@ resource "aws_instance" "product_service_instance" {
   depends_on = [aws_key_pair.deployment_key]
 }
 
-# Output the private key so GitHub Actions can use it
-output "private_key_pem" {
-  value     = tls_private_key.dynamic_key.private_key_pem
-  sensitive = true
+output "private_key_openssh" {
+  value     = tls_private_key.dynamic_key.private_key_openssh
+  sensitive = true   # if you want to see it in GitHub Actions
 }
