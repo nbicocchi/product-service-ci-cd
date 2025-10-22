@@ -13,52 +13,23 @@ To test automated workflows you need an AWS EC2 instance (a virtual machine with
 
 ## About workflows
 
-### Infrastructure cleaning workflow
+### Infrastructure clean workflow
 
-**File:** `infrastructure-clean.yml`
-**Purpose:** Clean infrastructure before deploy workflow trigger
+* **Purpose:** Clean infrastructure before deploy workflow trigger
+* **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`.
 
-**What it does:**
 
-* Removes webapp service
-* Uninstalls Docker and PostgreSQL
-* Cleans EC2 opt folder
+### Docker setup workflow
 
-> **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`.
+* **Purpose:** Deploy Docker on the EC2 instance.
+* **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`.
 
-### JAR workflow
+### Docker run workflow
 
-**File:** `deploy-JAR.yml`
-**Purpose:** Build and deploy the Spring Boot application to the EC2 instance.
-
-**What it does:**
-
-* Uses Ansible to setup a given EC2 instance.
-* Uses Ansible to starts the application with the correct environment configuration.
-
-> **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`.
-
-### Docker workflow
-
-**File:** `deploy-docker.yml`
-**Purpose:** Deploy Docker containers on the EC2 instance.
-
-**What it does:**
-
-* Uses Ansible to setup a given EC2 instance.
-* Launches containers defined in `docker-compose.yml`.
-* Supports containerized applications or microservices.
-
-> **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`. Additional secrets may be needed for container configurations.
+* **Purpose:** Deploy Docker containers on the EC2 instance.
+* **Required secret:** `EC2_SSH_KEY`, `EC2_HOST`, `EC2_USER`.
 
 ### Infrastructure provisioning workflow
 
-**File:** `infrastructure-provisioning.yml`
-**Purpose:** Provision and configure an AWS EC2 instance.
-
-**What it does:**
-
-* Creates a new EC2 instance using Terraform.
-* Configures SSH access and environment variables.
-
-> **Required secrets:** `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
+* **Purpose:** Provision and configure an AWS EC2 instance.
+* **Required secrets:** `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.

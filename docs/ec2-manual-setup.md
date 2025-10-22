@@ -116,11 +116,3 @@ sudo cat ~/.ssh/my-ec2-key.pem
 > `-----BEGIN OPENSSH PRIVATE KEY-----`
 >
 > `-----END OPENSSH PRIVATE KEY-----`
-
-## Too many steps!
-
-Maybe you are thinking that setting up an EC2 instance is boring and time consuming. Maybe you are right, but you need an EC2 instance.
-
-> It's a dirty job, but someones's gotta do it!
-
-Luckly, **Terraform** is here for you!
