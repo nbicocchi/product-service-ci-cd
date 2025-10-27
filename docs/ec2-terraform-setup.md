@@ -8,7 +8,6 @@ Terraform files into the [terraform folder](../terraform) of this repository all
 
 - An active [AWS account](https://aws.amazon.com/console/)
 - Basic familiarity with the AWS Management Console
-- Basic familiarity with some bash commands and Linux systems
 
 ## Get your AWS CLI credentials
 
@@ -34,8 +33,30 @@ Secrets:
 * `EC2_SSH_KEY`: this secret allows GitHub runners to create connections to the EC2 instance (shown in Terraform logs).
 
 >[!NOTE]
-> Copy and paste **ALL** the content of your private key file into the secret variable. Include also the following lines from the file:
+> Copy and paste **ALL** the private key into the secret variable. Include also the following lines:
 >
 > `-----BEGIN OPENSSH PRIVATE KEY-----`
 >
 > `-----END OPENSSH PRIVATE KEY-----`
+
+## Test SSH connection to the machine
+
+In your terminal:
+
+* Go to **Actions** > `infrastructure-provisioning` and open the last action execution logs
+* Copy the private key printed into the `Get OpenSSH private key` log.
+* Create a private key file, paste into it the content of actions logs and set correct permsission:
+
+```bash
+cd ~/.ssh
+> deploy_key
+vim ./deploy_key
+chmod 400 ./deploy_key
+```
+
+* Open an SSH connection to your instance:
+
+```bash
+cd ~/.ssh
+ssh -i deploy_key ubuntu@<hostname>
+```
