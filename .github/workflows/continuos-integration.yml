@@ -115,6 +115,7 @@ jobs:
           path: target/
 
       - name: Build Docker Image
+        working-directory: product-service-ci-cd
         run: docker build -t nbicocchi/product-service-ci-cd:latest .
 
       - name: Run Trivy Vulnerability Scan
