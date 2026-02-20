@@ -112,7 +112,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: jar-artifact-java-21
-          path: target/
+          path: product-service-ci-cd/target
 
       - name: Build Docker Image
         working-directory: product-service-ci-cd
