@@ -31,8 +31,9 @@ The `.pem` contains your private key. Move it to the `.ssh` folder and set corre
 On your terminal execute:
 
 ```bash
-mv ~/Download/my-ec2-key.pem ~/.ssh       # Move file
-chmod 400 ~/.ssh/my-ec2-key.pem           # Set file permissions
+mkdir ~/.ssh 
+cp ~/Downloads/my-ec2-key.pem ~/.ssh      
+chmod 400 ~/.ssh/my-ec2-key.pem
 ```
 
 ## Instance setup
@@ -54,7 +55,7 @@ The AWS machine image allows you to choose the machine architecture and its oper
 ### Step 3: Choose Instance Type
 
 * Go to the **Instance type** section
-* From the list, select **t3.micro** (Free Tier eligible).
+* From the list, select **t2.micro** (Free Tier eligible).
 
 ### Step 4: Create or select a Key Pair
 

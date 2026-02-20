@@ -1,15 +1,11 @@
 # Product-Service CI/CD
 
-This repository hosts a **sample Spring Boot web application** and demonstrates **GitHub workflows** for automated deployment using [Terraform](https://developer.hashicorp.com/terraform), [Ansible](https://docs.ansible.com/), and [Docker](https://www.docker.com/).
+* This repository hosts a **sample Spring Boot web application** and demonstrates **GitHub workflows** for automated deployment using [Terraform](https://developer.hashicorp.com/terraform), [Ansible](https://docs.ansible.com/), and [Docker](https://www.docker.com/).
 
-It’s ideal for learning how to integrate infrastructure provisioning, deployment, and containerization with CI/CD pipelines.
+* To test automated workflows you need an AWS EC2 instance (a virtual machine with a public IP address). You can create an AWS EC2 instance in two ways:
 
-## Repository fork and setup
-
-To test automated workflows you need an AWS EC2 instance (a virtual machine with a public IP address). You can create an AWS EC2 instance in two ways:
-
-* **Manually** using the AWS console. Follow [this guide](./docs/ec2-manual-setup.md).
-* **Automatically** using Terraform files via `infrastructure provisioning` workflow. Follow [this guide](./docs/ec2-terraform-setup.md).
+  * **Manually** using the AWS console. Follow [this guide](./docs/ec2-manual-setup.md).
+  * **Automatically** using Terraform files via `infrastructure provisioning` workflow. Follow [this guide](./docs/ec2-terraform-setup.md).
 
 ## About workflows
 
